@@ -1,0 +1,48 @@
+a = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+b = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+c = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+import random
+x=(input("what do you choose rock a scissors b paper c :")).lower()
+print(x)
+print()
+choices=['a','b','c']
+computer_choice=random.choice(choices)
+print(f"computer choice is {computer_choice}")
+print(computer_choice)
+if x==a and computer_choice==b:
+    print("you lose")
+elif x==c and computer_choice==a:
+    print("you lose")
+elif x== b and computer_choice== a:
+    print("you win")
+elif x==c and computer_choice==b:
+    print("you win")
+elif x==b and computer_choice==c:
+    print("you lose")
+elif x==computer_choice:
+    print("draw")
+else:
+    print("you win")
