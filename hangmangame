@@ -1,0 +1,25 @@
+word_list = ["aardvark", "baboon", "camel"]
+
+
+import random
+chosen_word = random.choice(word_list)
+print(chosen_word)
+
+placeholder=""
+for position in range(0, len(chosen_word)):
+    placeholder += "_"
+print(placeholder)
+game_over = False
+while not game_over:
+    guess = input("guess a letter:").lower()
+
+
+
+    display =""
+    for letter in chosen_word:
+        if letter==guess:
+            display += letter
+        else:
+            display += "_"
+            print(display)
+            if d
