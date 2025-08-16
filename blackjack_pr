@@ -1,5 +1,5 @@
 import random
-from art import logo
+
 def deal_card():
     cards = [11,2,3,4,5,6,7,8,9,10,10,10,10]
     card = random.choice(cards)  # also changed random.choices → random.choice
@@ -24,7 +24,7 @@ def compare(u_score, c_score):
     else:
         return "you lose"
 def play_game():
-    print(logo)
+    
     user_cards = []
     computer_cards = []
     is_gameover = False
@@ -54,6 +54,7 @@ def play_game():
     print(f"your final hand: {user_cards}, final_score: {user_score}")
     print(f"computer first card: {computer_cards}, final score: {computer_score}")
     print(compare(user_score,computer_score))
+
 while input("Do you want to play again? (y/n) ").lower() == 'y':
     print("\n" * 20)
     play_game()
