@@ -28,7 +28,7 @@ screen.onkey(l_paddle.go_down,"s")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
     #detect collision with wall
@@ -44,9 +44,12 @@ while game_is_on:
         ball.reset_position()
         scoreboard.l_point()
 
-
-    if ball.xcor()<-380:
+    if ball.xcor() < -380:
         ball.reset_position()
+        scoreboard.r_point()
+
+
+   
 
 
 
