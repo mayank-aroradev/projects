@@ -1,0 +1,20 @@
+import pandas as pd
+
+# ✅ Corrected path
+data = pd.read_csv(r"day 26/datas.csv")
+
+# Count each color
+grey_squirrel = len(data[data["Primary Fur Color"] == "Gray"])
+black_squirrel = len(data[data["Primary Fur Color"] == "Black"])
+
+# Create dictionary
+data_dict = {
+    "Fur Color": ["Gray", "Black"],
+    "Count": [grey_squirrel, black_squirrel]
+}
+
+# Convert to DataFrame and save
+df = pd.DataFrame(data_dict)
+df.to_csv("squirrel_count.csv", index=False)
+
+print(df)
