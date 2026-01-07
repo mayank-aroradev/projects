@@ -52,7 +52,7 @@ for article in formatted_articles:
     message = client.messages.create(
         body=article,
         from_='+12403845699',
-        to='+919868156531'
+        to='+91'
     )
 #Optional TODO: Format the message like this: 
 """
