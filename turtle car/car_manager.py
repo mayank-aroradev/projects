@@ -28,3 +28,4 @@ class CarManager:
 
     def level_up(self):
         self.car_speed += MOVE_INCREMENT
+

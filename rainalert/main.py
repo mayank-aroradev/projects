@@ -19,3 +19,6 @@ if will_rain:
     print("Bring an umbrella")
 else:
     print("No rain expected")
+
+#environment keys= to secure api keys from hackers 
+#method to do it is in terminal in caps take the name of api and key use $env:____="your_key_here" for windows

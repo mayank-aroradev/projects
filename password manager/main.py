@@ -93,6 +93,7 @@ window = Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50)
 
+
 # Canvas
 canvas = Canvas(height=200, width=200)
 logo_img = PhotoImage(file=r"C:\Users\dell\Desktop\projects\password manager\logo.png")

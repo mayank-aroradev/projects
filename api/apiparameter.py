@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 MY_LAT=28.6619
 MY_LONG=77.2273
@@ -9,5 +10,5 @@ parameters={
 }
 response = requests.get(url="https://api.sunrise-sunset.org/json",params=parameters)
 response.raise_for_status()
-data=response.json()
+data=response.json() 
 print(data)

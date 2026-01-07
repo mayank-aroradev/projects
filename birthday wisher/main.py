@@ -27,7 +27,7 @@ if today_tuple in birthdays_dict:
         contents = contents.replace("[NAME]", birthday_person["name"])
 
     my_email = "mayankarora25071@gmail.com"
-    password = "dobsgglmazwvyvig"  # app password
+    password = "dobsgglmazwvyv"  # app password
 
     # Send email
     with smtplib.SMTP("smtp.gmail.com", 587) as connection:
