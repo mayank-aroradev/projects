@@ -1,0 +1,66 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import os
+
+PROMISED_DOWN = 150
+PROMISED_UP = 10
+
+TWITTER_EMAIL = (os.getenv("TWITTER_EMAIL"))
+TWITTER_PASSWORD = (os.getenv("TWITTER_PASSWORD"))
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_experimental_option("detach", True)
+
+
+class InternetSpeedBot:
+
+    def __init__(self):
+        self.driver = webdriver.Chrome(options=chrome_options)
+        self.down = 0
+        self.up = 0
+
+    def internet_speed(self):
+        self.driver.get("https://www.speedtest.net/")
+        time.sleep(3)
+
+        self.driver.find_element(By.CLASS_NAME, "start-text").click()
+        time.sleep(60)
+
+        self.down = self.driver.find_element(By.CLASS_NAME, "download-speed").text
+        self.up = self.driver.find_element(By.CLASS_NAME, "upload-speed").text
+
+    def twitter_bot(self):
+        self.driver.get("https://twitter.com/login")
+        wait = WebDriverWait(self.driver, 15)
+
+        email = wait.until(EC.presence_of_element_located((By.NAME, "text")))
+        email.send_keys(TWITTER_EMAIL)
+        email.send_keys(Keys.ENTER)
+
+        time.sleep(3)
+
+        password = wait.until(EC.presence_of_element_located((By.NAME, "password")))
+        password.send_keys(TWITTER_PASSWORD)
+        password.send_keys(Keys.ENTER)
+
+        time.sleep(5)
+
+        tweet = f"Hey Internet Provider, why is my speed {self.down}↓/{self.up}↑ when I pay for {PROMISED_DOWN}↓/{PROMISED_UP}↑?"
+
+        tweet_box = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[data-testid='tweetTextarea_0']")))
+        tweet_box.send_keys(tweet)
+
+        tweet_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "div[data-testid='tweetButtonInline']")))
+        tweet_button.click()
+
+        time.sleep(3)
+        self.driver.quit()
+
+
+bot = InternetSpeedBot()
+bot.internet_speed()
+bot.twitter_bot()
