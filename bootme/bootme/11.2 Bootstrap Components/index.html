@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Components</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>.feature-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: .75rem;
+}</style>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid d-flex align-items-center">
+
+    <!-- Logo Left -->
+    <a class="navbar-brand me-4" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-anthropic" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M9.218 2h2.402L16 12.987h-2.402zM4.379 2h2.512l4.38 10.987H8.82l-.895-2.308h-4.58l-.896 2.307H0L4.38 2.001zm2.755 6.64L5.635 4.777 4.137 8.64z"/>
+</svg>Atstakes</a>
+
+    <!-- Menu Center -->
+    <ul class="navbar-nav flex-row gap-4 mx-auto">
+      <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+    </ul>
+
+    <!-- Search Right -->
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="postcode">
+      <button class="btn btn-outline-success">Check</button>
+    </form>
+
+  </div>
+</nav>
+
+
+<!-- HERO SECTION -->
+<div class="px-4 py-5 my-5 text-center">
+
+  <!-- FIXED IMAGE PATH -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="500" height="100" fill="currentColor" class="bi bi-anthropic" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M9.218 2h2.402L16 12.987h-2.402zM4.379 2h2.512l4.38 10.987H8.82l-.895-2.308h-4.58l-.896 2.307H0L4.38 2.001zm2.755 6.64L5.635 4.777 4.137 8.64z"/>
+</svg>
+
+  <h1 class="display-5 fw-bold text-body-emphasis">MOVE WITH JOY</h1>
+
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">WELCOME TO OUR WEBSITE</p>
+
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <button class="btn btn-primary btn-lg px-4">GET A QUOTE</button>
+      <button class="btn btn-outline-secondary btn-lg px-4">CONTACT</button>
+    </div>
+  </div>
+</div>
+<div class="container px-4 py-5" id="featured-3"> <h2 class="pb-2 border-bottom">OUR FEATURES</h2> <div class="row g-4 py-5 row-cols-1 row-cols-lg-3"> <div class="feature col"> <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"> <img src="chevron-right.svg"alt="#collection"></use></svg> </div> <h3 class="fs-2 text-body-emphasis">FASTEST </h3> <p>NO UP OUR LEAGUE YET</p> <a href="#" class="icon-link">
+Call to action
+<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> </div> <div class="feature col"> <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"> <img src="chat-square-heart.svg"alt="#people-circle"></use></svg> </div> <h3 class="fs-2 text-body-emphasis">WE WORK HARD </h3> <p>we work it out</p> <a href="#" class="icon-link">
+Call to action
+<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> </div> <div class="feature col"> <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"> <img src= "briefcase.svg"alt="#toggles2"></use></svg> </div> <h3 class="fs-2 text-body-emphasis">Hard EARNED</h3> <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p> <a href="#" class="icon-link">
+Call to action
+ </a> </div> </div> </div>
+<div class="container">
+  <!-- carousel here -->
+
+
+ <div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="moving-van.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="dog.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="family.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
