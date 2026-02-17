@@ -25,6 +25,9 @@ def show_post(index):
         if blog_post["id"] == index:
             return render_template("post.html", post=blog_post, yer=year)
 
+@app.route("/contact" , methods=["POST"])
+def datame():
+    return 'success'
 
 
 
