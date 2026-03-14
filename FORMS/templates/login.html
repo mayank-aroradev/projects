@@ -11,13 +11,13 @@
 			background-repeat:no-repeat;
 			}
   		</style>
-
+    {% from 'bootstrap5/form.html' import render_form %}
 
 	</head>
 	<body>
         <div class="container">
 		<h1>Login</h1>
-		<form method="POST" action="{{url_for('login')}}" novalidate>
+		<!-- <form method="POST" action="{{url_for('login')}}" novalidate>
 			{{form.csrf_token}}
 			<P>{{form.email.label}}<br>{{form.email(size=30)}}
 			{% for err in form.email.errors %}
@@ -28,7 +28,8 @@
 			<span style="color:red">{{err}}</span>
 			{% endfor %}</P>
 			{{form.submit}}
-		</form>
+		</form> -->
+		{{render_form(form)}}
         <!-- This is where our form will go. -->
         </div>
 	</body>
