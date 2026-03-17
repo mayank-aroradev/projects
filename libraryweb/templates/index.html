@@ -6,12 +6,15 @@
   </head>
   <body>
     <h1>My Library</h1>
-    {%if not bookme%}
+    {%if not books%}
     <P>LIBRARY IS EMPTY</P>
     {%endif%}
     <ul>
       {%for bookme in books %}
-      <li>{{bookme.title}} || {{bookme.author}}  || {{bookme.rating}}</li>
+      <li><a href="{{url_for('delete',id=bookme.id)}}">delete</a>
+        {{bookme.title}} || {{bookme.author}}  || {{bookme.rating}}
+      <a href="{{url_for('edit',id=bookme.id)}}">Edit Rating</a>
+      </li>
       {%endfor%}
     </ul>
 
