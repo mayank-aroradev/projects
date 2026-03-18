@@ -7,7 +7,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
-
+import os
+api_key = os.getenv("MOV_KEY")
+headers = {"accept": "application/json"}
 '''
 Red underlines? Install the required packages first: 
 Open the Terminal in PyCharm (bottom left). 
@@ -79,8 +81,11 @@ class addmov(FlaskForm):
 
 @app.route("/")
 def home():
-    result=db.session.execute(db.select(Movie).order_by(Movie.title))
+    result=db.session.execute(db.select(Movie).order_by(Movie.ranking.desc()))
     all_movies=result.scalars().all()
+    for i in range (len(all_movies)):
+        all_movies[i].ranking=i+1
+        db.session.commit()
     return render_template("index.html",movies=all_movies)
 
 @app.route("/edit",methods=["GET","POST"])
@@ -103,13 +108,43 @@ def deleteme():
     db.session.commit()
     return redirect (url_for("home"))
 
-
+url="https://api.themoviedb.org/3/search/movie"
+movie_r="https://api.themoviedb.org/3/movie"
 @app.route("/add",methods=["GET","POST"])
 def addme():
     form2=addmov()
+    if form2.validate_on_submit():
+        movie_title=form2.title.data
+        response = requests.get(url, params={
+            "api_key": "b0673af4f6e6742fe32ee8d13443a395",  # from environment
+            "query": movie_title
+        },timeout=10)
+        print(response.status_code)
+        data=response.json()['results']
+        print(data)
+        return render_template("select.html",options=data)
+    
     return render_template('add.html',form=form2)
 
-
+@app.route("/find",methods=["GET","POST"])
+def findme():
+    movie_api_id=request.args.get('id')
+    if movie_api_id:
+        movie_url=f'{movie_r}/{movie_api_id}'
+        response=requests.get(movie_url,params={"api_key":'b0673af4f6e6742fe32ee8d13443a395',"language": "en-US"},timeout=10)
+        data=response.json()
+        print(data)
+        print("STATUS:", response.status_code)  # 👈 Add this
+        print("DATA:", data)    
+        new_movie=Movie(
+            title=data["title"],
+            year=data["release_date"].split("-")[0],
+            img_url=f"https://image.tmdb.org/t/p/original{data['poster_path']}",
+            description=data["overview"]
+           )
+        db.session.add(new_movie)
+        db.session.commit()
+        return redirect(url_for("home"))
 
 
 if __name__ == '__main__':
