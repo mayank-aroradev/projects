@@ -119,6 +119,19 @@ def patch_new(cafe_id):
 
 # HTTP DELETE - Delete Record
 
+@app.route("/report-closed/<int:cafe_id>",methods=["DELETE"])
+def report_closed(cafe_id):
+    api_key = request.args.get("api-key")
+    if api_key=="mayank2345":
+        if api_key == "mayank2345":
+            cafe = db.session.get(Cafe, cafe_id)
+            if cafe is None:
+                return jsonify(error={"Not Found": "Sorry a cafe with that id was not found in the database."}), 404
+            db.session.delete(cafe)
+            db.session.commit()
+            return jsonify(response={"success": "Successfully deleted the cafe from the database."}), 200
+        else:
+            return jsonify(error={"Forbidden": "Sorry, that's not allowed. Make sure you have the correct api_key."}), 403
 
 if __name__ == '__main__':
     app.run(debug=True,threaded=False)
