@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for,request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -9,18 +9,9 @@ from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 import os
-'''
-Make sure the required packages are installed: 
-Open the Terminal in PyCharm (bottom left). 
-
-On Windows type:
-python -m pip install -r requirements.txt
-
-On MacOS type:
-pip3 install -r requirements.txt
-
-This will install the packages from the requirements.txt for this project.
-'''
+from forms import registerform
+from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
+from werkzeug.security import generate_password_hash, check_password_hash
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -47,6 +38,12 @@ class BlogPost(db.Model):
     body: Mapped[str] = mapped_column(Text, nullable=False)
     author: Mapped[str] = mapped_column(String(250), nullable=False)
     img_url: Mapped[str] = mapped_column(String(250), nullable=False)
+
+class User(UserMixin,db.Model):
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    email:Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
+    password:Mapped[str]= mapped_column(String(250),unique=True,nullable=False)
+    name: Mapped[str] = mapped_column(String(100))
 
 def get_dict(self):
     return{column.name:getattr(self,column.name) for column in self.__table__.columns}
@@ -136,6 +133,29 @@ def about():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+
+
+@app.route("/register",methods=["GET","POST"])
+def registeruser():
+    form=registerform()
+    if form.validate_on_submit():
+        hashed_password=generate_password_hash(request.form.get('password'),
+                                             method='pbkdf2:sha256',
+                                            salt_length=8)
+        new_user=User(
+            email=form.email.data,
+            name=form.name.data,
+            password=hashed_password
+        )
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for("get_all_posts"))
+    return render_template("register.html", form=form)
+        
+
+    
+
 
 
 if __name__ == "__main__":
