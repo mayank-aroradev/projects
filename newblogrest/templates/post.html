@@ -34,9 +34,33 @@
             >Edit Post</a
           >
         </div>
+        
+        <!-- Comments Area -->
+        <!-- Load the CKEditor -->
+        {{ ckeditor.load() }}
+        <!-- Configure it with the name of the form field from CommentForm -->
+        {{ ckeditor.config(name='comment_text') }}
+        <!-- Create the wtf quick form from CommentForm -->
+        {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+        <div class="col-lg-8 col-md-10 mx-auto comment">
+          <ul class="commentList">
+            <li>
+              <div class="commenterImage">
+                <img
+                  src="../static/assets/img/default-profile.jpg"
+                />
+              </div>
+              <div class="commentText">
+                <p>Some comment</p>
+                <span class="date sub-text">comment author name</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </article>
+      
 
 {% include "footer.html" %}

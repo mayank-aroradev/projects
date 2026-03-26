@@ -9,3 +9,12 @@ class registerform(FlaskForm):
     password=PasswordField("password",validators=[DataRequired()])
     name=StringField("Name",validators=[DataRequired()])
     submit=SubmitField("Submit",validators=[DataRequired()])
+
+class loginform(FlaskForm):
+    email=StringField("email",validators=[DataRequired()])
+    password=PasswordField("password",validators=[DataRequired()])
+    submit=SubmitField("Submit",validators=[DataRequired()])
+
+class commentform(FlaskForm):
+    comment=CKEditorField("comment",validators=[DataRequired()])
+    submit= SubmitField("submit Comment ")
