@@ -1,5 +1,5 @@
 {% include "header.html" %}
-
+{% from "bootstrap5/form.html" import render_form %}
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('{{post.img_url}}')">
   <div class="container position-relative px-4 px-lg-5">
@@ -43,7 +43,11 @@
         <!-- Create the wtf quick form from CommentForm -->
         {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
         <div class="col-lg-8 col-md-10 mx-auto comment">
+          {# Look through the comments linked to the requested post #}
+           <div class="comment">
           <ul class="commentList">
+            <!-- Show all comments -->
+            {% for comment in post.comments: %}
             <li>
               <div class="commenterImage">
                 <img
@@ -51,9 +55,14 @@
                 />
               </div>
               <div class="commentText">
-                <p>Some comment</p>
-                <span class="date sub-text">comment author name</span>
+                {{comment.text|safe}}
+                <span class="sub-text">{{comment.comment_author.name}}</span>
               </div>
+            </li>
+            {% endfor %}
+          </ul>
+
+        </div>
             </li>
           </ul>
         </div>
