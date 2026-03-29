@@ -26,7 +26,7 @@ def admin_only(f):
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__, instance_path=os.path.join(basedir, 'instance'))
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('VARIABLE_NAME')
 
 Bootstrap5(app)
 ckeditor = CKEditor(app)
@@ -242,4 +242,4 @@ def test():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5003)
+    app.run(debug=False, port=5003)
