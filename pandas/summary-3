@@ -16,8 +16,10 @@ create a scatter plot in Matplotlib
 
 work with tables in a relational database by using primary and foreign keys
 
-.merge() DataFrames along a particular column
+.merge() DataFrames along a particular column.
 
-create a bar chart with Matplotlib
+
+
+create a bar chart with Matplotlib.
 
 https://colab.research.google.com/drive/1roY8F1mSGvy8aA3z_5P_jD4QM-2OZE6Q?usp=sharing
