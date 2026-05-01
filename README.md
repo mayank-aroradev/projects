@@ -26,9 +26,9 @@ Hey, I'm **Mayank Arora** — working through Angela Yu's 100 Days of Code bootc
 
 | Total Days | Completed | Remaining |
 |:---:|:---:|:---:|
-| 100 | 66 | 34 |
+| 100 | 80 | 34 |
 
-![66%](https://geps.dev/progress/66)
+![80%](https://geps.dev/progress/66)
 
 </div>
 
